@@ -1,0 +1,121 @@
+CHAT BOT:
+
+import random
+ 
+name = "Bot_6282"
+resp = {
+   "name": ["My name is {0}".format(name)],
+   "deliver": [
+       "Currently due to covid-19 we only provide parcel delivery services through zomato/swiggy.",
+       "Yeah we are soon looking to open an outlet nearest to you, but for now we only have parcel service. ",
+       "Sorry only parcel service is available.",
+       "Our kitchen is situated near aissms college,pune ,only parcel service available."],
+   "safety": [
+       "Don't worry our food is 100% safe.",
+       "We are currently ranked A+ in food safety.",
+       "Don't worry,Your food is prepared with all safety measures.", ],
+   "menu": [
+       "poha --------- 30rs\n "
+       "upma --------- 35rs\n"
+       "vada sambhar -------- 40rs\n"
+       "veg pulav ------- 50rs\n"
+       "panner masala ----- 100rs\n"
+       "mushroom -------- 90rs\n"
+       "roti ------- 10rs\n"
+       "coco-cola ------ 20rs\n",
+   ],
+   "": [
+       "I'm Sorry i didn't understand can u please enter valid keywords.",
+       "What do you mean by these?, please enter valid keywords.",
+       "OOps!! can u please enter valid keywords."],
+   "default": ["This is a default message"]}
+ 
+ 
+def res(message):
+   if message in resp:
+       bot286_message = random.choice(resp[message])
+   else:
+       bot286_message = random.choice(resp["default"])
+   return bot286_message
+ 
+ 
+def real(xtext):
+   if "safety" in xtext:
+       ytext = "safety"
+   elif "secure" in xtext:
+       ytext = "safety"
+   elif "kitchen" in xtext:
+       ytext = "safety"
+   elif "deliver" in xtext:
+       ytext = "deliver"
+   elif "address" in xtext:
+       ytext = "deliver"
+   elif "name" in xtext:
+       ytext = "name"
+   elif "menu" in xtext:
+       ytext = "menu"
+   else:
+       ytext = ""
+   return ytext
+ 
+ 
+def calculatebill():
+   n = "start"
+   bill = 0
+   while (n != "stop"):
+       dish = input("Enter name of dish: ").lower()
+       if "poha" in dish:
+           bill += 30
+       elif "upma" in dish:
+           bill += 35
+       elif "vada" in dish:
+           bill += 40
+       elif "veg" in dish:
+           bill += 50
+       elif "panner" in dish:
+           bill += 100
+       elif "mushroom" in dish:
+           bill += 90
+       elif "roti" in dish:
+           bill += 10
+       elif "coco" in dish:
+           bill += 20
+       elif "cancel" in dish:
+           bill = 0
+       print("Total Bill is: " + str(bill))
+       n = input(
+           "Type 'stop' if done else enter")
+   print("Thank You Order Placed/Cancelled!!!")
+ 
+ 
+def send_message(message):
+   # print((message))
+   response = res(message)
+   print((response))
+   if (message == "menu"):
+       calculatebill()
+ 
+ 
+print("Hi there, My name is {0} \n "
+     "Welcome to Dhawalikar Pure Veg Restaurant \n"
+     "How may i assist you, type 'menu' for referring our Menu-Card ".format(name))
+ 
+while 1:
+   my_input = input()
+   my_input = my_input.lower()
+   related_text = real(my_input)
+   send_message(related_text)
+   print("Enter 'menu' for Menu-card. You can also enter your queries. Enter stop or exit to exit Chatbot application ")
+   if my_input == "exit" or my_input == "stop":
+       print("BOT: GoodBye!!!")
+       break
+ 
+ 
+
+
+
+
+
+
+
+
